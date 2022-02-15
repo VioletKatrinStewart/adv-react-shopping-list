@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useReducer } from 'react';
+import { useReducer } from 'react';
 
 const initialItems = [
   { id: 0, text: 'Cherries 🍒', done: false },
@@ -7,7 +7,7 @@ const initialItems = [
   { id: 2, text: 'Apples 🍎 ', done: false },
 ];
 
-function itemsReducter(items, action) {
+function itemsReducer(items, action) {
   switch (action.type) {
     case 'added': {
       return [
@@ -37,5 +37,32 @@ function itemsReducter(items, action) {
 }
 
 export default function Shopping() {
-  return <div>Shopping</div>;
+  const [items, dispatch] = useReducer(itemsReducer, initialItems);
+
+  const handleAddItem = (text) => {
+    dispatch({
+      type: 'added',
+      id: items.length + 1,
+      text,
+    });
+  };
+
+  const handleChangeItem = (task) => {
+    dispatch({
+      type: 'changed',
+      task,
+    });
+  };
+
+  const handleDeleteItem = (taskId) => {
+    dispatch({
+      type: 'deleted',
+      id: taskId,
+    });
+  };
+  return (
+    <>
+      <h1>Shopping List</h1>
+    </>
+  );
 }
