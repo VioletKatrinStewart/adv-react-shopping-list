@@ -1,5 +1,6 @@
 import React from 'react';
 import { useReducer } from 'react';
+import ItemList from '../../components/ItemList/ItemList';
 
 const initialItems = [
   { id: 0, text: 'Cherries 🍒', done: false },
@@ -63,6 +64,7 @@ export default function Shopping() {
   return (
     <>
       <h1>Shopping List</h1>
+      <ItemList items={items} onChangeItem={handleChangeItem} onDeleteItem={handleDeleteItem} />
     </>
   );
 }
