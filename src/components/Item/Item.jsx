@@ -33,6 +33,7 @@ export default function Item({ item, onChange, onDelete }) {
   }
   return (
     <div>
+      <p>{item.text}</p>
       <input
         type="checkbox"
         checked={item.done}

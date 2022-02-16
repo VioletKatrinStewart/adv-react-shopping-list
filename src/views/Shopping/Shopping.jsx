@@ -40,13 +40,13 @@ function itemsReducer(items, action) {
 export default function Shopping() {
   const [items, dispatch] = useReducer(itemsReducer, initialItems);
 
-  const handleAddItem = (text) => {
-    dispatch({
-      type: 'added',
-      id: items.length + 1,
-      text,
-    });
-  };
+  //   const handleAddItem = (text) => {
+  //     dispatch({
+  //       type: 'added',
+  //       id: items.length + 1,
+  //       text,
+  //     });
+  //   };
 
   const handleChangeItem = (task) => {
     dispatch({
