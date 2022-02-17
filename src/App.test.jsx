@@ -18,3 +18,20 @@ test('renders a shopping list that can add items', () => {
 
   screen.getByText('Meat 🍖');
 });
+
+test('renders a shopping list that can edit items', () => {
+  render(<App />);
+
+  const editButton = screen.getByLabelText('Edit Peaches 🍑');
+  userEvent.click(editButton);
+  const saveEditButton = screen.getByLabelText('Save');
+  userEvent.click(saveEditButton);
+});
+
+test('renders a shopping list that can delete items', () => {
+  render(<App />);
+
+  const deleteButton = screen.getByLabelText('Delete Peaches 🍑');
+  userEvent.click(deleteButton);
+  expect(screen.queryByText('Peaches 🍑')).not.toBeInTheDocument();
+});
