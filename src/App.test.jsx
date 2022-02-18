@@ -1,9 +1,14 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from './App';
+import ListProvider from './context/ListContext';
 
 test('renders a shopping list that can add items', () => {
-  render(<App />);
+  render(
+    <ListProvider>
+      <App />
+    </ListProvider>
+  );
   const addInput = screen.getByPlaceholderText('add item');
   const addButton = screen.getByText('Add Item');
 
@@ -20,7 +25,11 @@ test('renders a shopping list that can add items', () => {
 });
 
 test('renders a shopping list that can edit items', () => {
-  render(<App />);
+  render(
+    <ListProvider>
+      <App />
+    </ListProvider>
+  );
 
   const editButton = screen.getByLabelText('Edit Peaches 🍑');
   userEvent.click(editButton);
@@ -29,7 +38,11 @@ test('renders a shopping list that can edit items', () => {
 });
 
 test('renders a shopping list that can delete items', () => {
-  render(<App />);
+  render(
+    <ListProvider>
+      <App />
+    </ListProvider>
+  );
 
   const deleteButton = screen.getByLabelText('Delete Peaches 🍑');
   userEvent.click(deleteButton);
